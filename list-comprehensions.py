@@ -16,4 +16,26 @@ print(result3)  #['ax', 'ay', 'az', 'bx', 'by', 'bz', 'cx', 'cy', 'cz']
 
 
 # 列出当前文件夹的内容
+import os
 
+print([d for d in os.listdir('.')])  #['.git', '.gitignore', '.idea', '__pycache__', 'circulate.py', 'data-type-boolean.py', 'data-type-string.py', 'decode.py', 'dict.py', 'function-call-in-other-file.py',
+                                     # 'function-parameter.py', 'function-recursion.py', 'function.py', 'if-else.py', 'input.py', 'iteration.py', 'list-comprehensions.py', 'list.py',
+                                     # 'print.py', 'README.md', 'set.py', 'slice.py', 'tuple.py', 'variable.py']
+
+
+# for循环可以同时使用两个或多个变量 比如dict的item() 可以同时迭代key和value
+d = {'x': 'A', 'y': 'B', 'z': 'C'}
+for k, v in d.items():
+    print(k, v)
+# 所以列表生成时可以使用两个变量来生成list
+gen_result = [k + '=' + v for k, v in d.items()]
+print(gen_result)    #['x=A', 'y=B', 'z=C']
+
+# 把一个字符串中所有字母变成小写
+L = ['Hello', 'World', 'IBM', 'Apple']
+gen_result2 = [s.lower() for s in L]
+print(gen_result2)   #['x=A', 'y=B', 'z=C']
+# 但是如果list中的不全是字符串，包含有整数的话，会出错
+L2 = ['Hello', 'World', 'IBM', 123, 'Apple', None]
+gen_result3 = [s.lower() for s in L2 if isinstance(s, str)]
+print(gen_result3)
