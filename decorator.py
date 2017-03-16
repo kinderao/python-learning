@@ -74,3 +74,38 @@ now()  #  call now():
 print(now.__name__)  # now
 
 
+# 实现一个和装饰器，调用前输出before call，调用后输出after call
+def log(func):
+    def wrapper(*args, **kw):
+        print('before call')
+        f = func(*args, **kw)
+        print('after call')
+        return f
+    return wrapper
+
+@log
+def now():
+    print('2017---')
+now()
+
+
+# 实现一个装饰器，使用@log和@log（'execute'）都能调用
+def log(text):
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s call %s():' %(text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    if isinstance(text, str):
+        return decorator
+    else:
+        f = text
+        text = ''
+        return decorator(f)
+
+@log('BEGIN')
+def now():
+    print('ddd')
+
+now()
+
