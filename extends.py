@@ -57,45 +57,5 @@ run_twice(Dog2())
 #
 
 
-#
-#   获取对象信息
-#       当我们拿到一个对象的引用事，如何知道这个对象是什么类型的，有哪些方法
-#   使用type()
-print(type(123))  #<class 'int'>
-print(type('abc'))  # <class 'str'>
-
-# 如果一个变量指向函数或者类，也可以用type()来判断
-print(type(abs))  # <class 'builtin_function_or_method'>
-
-# >>> type(123)==type(456)
-# True
-# >>> type(123)==int
-# True
-# >>> type('abc')==type('123')
-# True
-# >>> type('abc')==str
-# True
-# >>> type('abc')==type(123)
-# False
-
-# 判断基本类型可以直接用int，str判断，但是如果要判断一个对象是否是函数怎么办？ 可以使用types模块中定义的常量：
-import types
-def fn():
-    pass
-
-print(type(fn) == types.FunctionType)  # True
-print(type(abs) == types.BuiltinFunctionType)  # True
-print(type(lambda x: x) == types.LambdaType)  # True
-print(type(x for x in range(2)) == types.GeneratorType)  # True
-
-
-# isinstance() 也可以判断class的类型
-print(isinstance(aDog, Animal)) # True
-
-# isinstance() 还可以判断一个变量是否是某些类型中的一种，比如下面的代码
-print(isinstance([1, 2, 3], (list, tuple)))  # True
-print(isinstance([1, 2, 3], (str, tuple)))  # False
-
-
 
 
