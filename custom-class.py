@@ -129,8 +129,14 @@ class Chain2(object):
     def __init__(self, path=''):
         self._path = path
     def __getattr__(self, path):
-        return
-# print(Chain().users('kinderao').repos)
+        return Chain2('%s/%s' % (self._path, path))
+    def __call__(self, param):
+        return Chain2('%s/%s' % (self._path, param))
+    def __str__(self):
+        return self._path
+print(Chain2().users('kinderao').repos)  # /users/kinderao/repos
+
+
 
 
 #
